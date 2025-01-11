@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="educational.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Algorithm Visualizer</h1>
+        
+        <!-- Mode Toggle -->
+        <div class="mode-toggle">
+            <button id="singleModeBtn" class="mode-btn active">Single Algorithm</button>
+            <button id="comparisonModeBtn" class="mode-btn">Comparison Mode</button>
+        </div>
+
+        <!-- Single Algorithm Mode -->
+        <div id="singleMode" class="mode-container">
+            <div id="controls-single" class="controls">
+                <div class="control-group">
+                    <label for="algorithmSelect">Select Algorithm:</label>
+                    <select id="algorithmSelect">
+                        <option value="bubbleSort">Bubble Sort</option>
+                        <option value="quickSort">Quick Sort</option>
+                        <option value="mergeSort">Merge Sort</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="arraySize">Array Size:</label>
+                    <input type="range" id="arraySize" min="5" max="50" step="1" value="20">
+                    <span id="arraySizeValue">20</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="speed">Speed:</label>
+                    <input type="range" id="speed" min="1" max="100" step="1" value="50">
+                    <span id="speedValue">50</span>
+                </div>                
+                
+                <div class="control-group">
+                    <button onclick="generateArray()">Generate Array</button>
+                    <button id="startVisualizationBtn">Start Visualization</button>
+                </div>
+            
+                <!-- New div for educational buttons -->
+                <div class="educational-controls">
+                    <!-- Tutorial, Code View, and Practice Mode buttons will be inserted here -->
+                </div>
+            </div>
+
+            <div id="tutorial-container" class="hidden"></div>
+            <div id="code-viewer" class="code-viewer hidden"></div>
+
+            <!-- Algorithm Information for Single Mode -->
+            <div id="algorithm-info-single" class="algorithm-info"></div>
+
+            <!-- Visualization Area -->
+            <div id="visualizer-single" class="visualizer">
+                <div id="array-single" class="array"></div>
+                <div id="metrics-single" class="metrics">
+                    <p>Comparisons: <span id="comparisons-single">0</span></p>
+                    <p>Swaps: <span id="swaps-single">0</span></p>
+                    <p>Execution Time: <span id="time-single">0</span> ms</p>
+                </div>
+            </div>
+
+            <!-- The tutorial content and code viewer will be inserted here by educational.js -->
+            <!-- The interactive practice mode will be inserted here by interactive.js -->
+        </div>
+
+        <!-- Comparison Mode -->
+        <div id="comparisonMode" class="mode-container hidden">
+            <div id="controls-comparison" class="controls">
+                <div class="algorithm-selectors">
+                    <div class="control-group">
+                        <label for="algorithm1">Algorithm 1:</label>
+                        <select id="algorithm1">
+                            <option value="bubbleSort">Bubble Sort</option>
+                            <option value="quickSort">Quick Sort</option>
+                            <option value="mergeSort">Merge Sort</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="algorithm2">Algorithm 2:</label>
+                        <select id="algorithm2">
+                            <option value="quickSort">Quick Sort</option>
+                            <option value="bubbleSort">Bubble Sort</option>
+                            <option value="mergeSort">Merge Sort</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="comparison-controls">
+                    <!-- Slider Group 1 -->
+                    <div class="control-group">
+                        <label for="arraySize-comparison">Array Size:</label>
+                        <input type="range" id="arraySize-comparison" min="5" max="50" step="1" value="20">
+                        <span id="arraySizeValue-comparison">20</span>
+                    </div>
+                
+                    <!-- Slider Group 2 -->
+                    <div class="control-group">
+                        <label for="speed-comparison">Speed:</label>
+                        <input type="range" id="speed-comparison" min="1" max="100" step="1" value="50">
+                        <span id="speedValue-comparison">50</span>
+                    </div>
+                
+                    <!-- Buttons -->
+                    <div class="button-group">
+                        <button onclick="generateArrays()">Generate Arrays</button>
+                        <button onclick="startComparison()">Start Comparison</button>
+                    </div>
+                </div>                                
+            </div>
+
+            <!-- Algorithm Information for Comparison Mode -->
+            <div id="algorithm-info-comparison" class="algorithm-info-comparison">
+                <div id="info1" class="algorithm-info"></div>
+                <div id="info2" class="algorithm-info"></div>
+            </div>
+
+            <div id="comparison" class="comparison-container">
+                <div class="visualizer">
+                    <div id="array1" class="array"></div>
+                    <div id="metrics1" class="metrics">
+                        <p>Comparisons: <span id="comparisons1">0</span></p>
+                        <p>Swaps: <span id="swaps1">0</span></p>
+                        <p>Execution Time: <span id="time1">0</span> ms</p>
+                    </div>
+                </div>
+                <div class="visualizer">
+                    <div id="array2" class="array"></div>
+                    <div id="metrics2" class="metrics">
+                        <p>Comparisons: <span id="comparisons2">0</span></p>
+                        <p>Swaps: <span id="swaps2">0</span></p>
+                        <p>Execution Time: <span id="time2">0</span> ms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button id="darkModeToggle" class="theme-toggle">
+            <span id="themeIcon">🌙</span>
+        </button>
+    </div>
+    
+    <!-- Scripts in correct order -->
+    <script src="script.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="educational.js"></script>
+    <script src="interactive.js"></script>
+</body>
+</html>
